@@ -547,10 +547,8 @@ Supervisor is managing.
 */
 func (s *Supervisor) Services() []Service {
 	ls := listServices{make(chan []Service)}
-
 	if s.sendControl(ls) {
 		return <-ls.c
-	} else {
-		return nil
 	}
+	return nil
 }
